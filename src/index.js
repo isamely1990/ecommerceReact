@@ -7,6 +7,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Menu from './Layout/Menu';
 import Home from './Pages/Home';
 import Catalogo from './Pages/Catalogo'
+import Login from './Pages/Login';
+import Registro from './Pages/Registro';
 
 ReactDOM.render(<BrowserRouter>
     <div>
@@ -14,6 +16,8 @@ ReactDOM.render(<BrowserRouter>
       { /*Lo que levanta primero siempre serà el menu con esa sintaxis*/}
       <Route exact path='/' component={Home} />
       <Route exact path='/catalogo' component={Catalogo} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/registro' component={Registro} />
     </div>
   </BrowserRouter>, document.getElementById('root'));
 
