@@ -44,7 +44,10 @@ class Catalogo extends Component {
     return (
       <Container>
         <Row>
-          <h2>Catalogo</h2>
+          <h2 className="text-secondary">Catálogo</h2>
+        </Row>
+        <Row>
+          <h4 className="p-3 mb-2 bg-info text-white rounded w-100">Nuestros productos</h4>
         </Row>
         <Row>
           {this.state.productos.map(producto => (

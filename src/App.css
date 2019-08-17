@@ -23,6 +23,15 @@
   color: #61dafb;
 }
 
+/* Slider */
+.carousel-control-next:focus, .carousel-control-next:hover, .carousel-control-prev:focus, .carousel-control-prev:hover {
+  color: #000 !important;
+}
+
+.carousel-indicators li {
+  color: #000 !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
