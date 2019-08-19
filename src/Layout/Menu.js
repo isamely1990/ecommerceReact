@@ -5,40 +5,38 @@ import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 class Menu extends Component {
   constructor(props){
     super(props)
-    console.log(this.props)
-    this.state ={
-      buscar: ''
-    }
+    // this.state ={
+    //   buscar: ''
+    // }
   }
 
-  handleSubmit(event) {
-    //alert('A name was submitted: ' + this.state.nombre);
-    console.log(this.state);
-    fetch('http://localhost:3000/products/buscar',{
-        method:'POST',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(this.state)
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-    })
+//   handleSubmit(event) {
+//     console.log(this.state);
+//     fetch('http://localhost:3000/products/buscar',{
+//         method:'POST',
+//         headers:{
+//             'Content-Type':'application/json'
+//         },
+//         body:JSON.stringify(this.state)
+//     })
+//     .then(res=>res.json())
+//     .then(data=>{
+//         console.log(data)
+//     })
     
-    event.preventDefault();
-}
+//     event.preventDefault();
+// }
 
-handleChange(event) {
+// handleChange(event) {
     
-  const target = event.target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
-  const name = target.name;
-  console.log(name)
-  this.setState({
-      [name]: value
-  });
-}
+//   const target = event.target;
+//   const value = target.type === 'checkbox' ? target.checked : target.value;
+//   const name = target.name;
+//   console.log(name)
+//   this.setState({
+//       [name]: value
+//   });
+// }
 
 
   render() {
@@ -51,10 +49,10 @@ handleChange(event) {
           <Nav.Link as={Link} to="/registro">Registro</Nav.Link>
           <Nav.Link as={Link} to="/login">Log in</Nav.Link>
         </Nav>
-        <Form inline>
+        {/* <Form inline>
           <FormControl type="text" placeholder="Búsqueda rápida" name="buscar" className="mr-sm-2"  onChange={this.handleChange.bind(this)} value={this.state.buscar}/>
           <Button variant="outline-info" onSubmit={this.handleSubmit.bind(this)}>Buscar</Button>
-        </Form>
+        </Form> */}
       </Navbar>
     );
     
