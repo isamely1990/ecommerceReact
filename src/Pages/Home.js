@@ -20,18 +20,12 @@ class Home extends Component {
       .then(res => res.json())
       .then(
         result => {
-          console.log("holiii");
-          console.log(result);
           this.setState({
             isLoaded: true,
             productos: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         error => {
-          console.log("nop");
           console.log(error);
           this.setState({
             isLoaded: true,
@@ -51,28 +45,28 @@ class Home extends Component {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src= {require('../Assets/img/slide1.jpg')}
+                src= {`img/slide1.jpg`}
                 alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src= {require('../Assets/img/slide2.jpg')}
+                src= {`img/slide2.jpg`}
                 alt="Third slide"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src= {require('../Assets/img/slide3.jpg')}
+                src= {`img/slide3.jpg`}
                 alt="Third slide"
               />
             </Carousel.Item>
           </Carousel>
         </Row>
         <Row>
-          <h4 className="p-3 mb-2 bg-info text-white rounded w-100">Productos destacados</h4>
+          <h4 className="p-3 mb-2 bg-info text-white rounded w-100">Últimos Productos</h4>
         </Row>
         <Row>
           {this.state.productos.map(producto => (
