@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-// import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-/* class Registro extends Component {
-   constructor(props) {
+class Registro extends Component {
+  /*   constructor(props) {
     super(props);
     this.state = {
       nombre: "",
@@ -163,78 +161,111 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
         </Form>
       </Container>
     );
-  } 
-} */
+  } */
 
-const Registro = () => (
-  <div>
-    <h1>Any place in your app!</h1>
-    <Formik
-      initialValues={{
-        nombre: "",
-        mail: "",
-        password: "",
-        calle: "",
-        altura: "",
-        ciudad: "",
-        provincia: "",
-        postal: ""
-      }}
-      validate={values => {
-        let errors = {};
-        if (!values.email) {
-          errors.email = "Required";
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = "Invalid email address";
-        }
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          fetch("http://localhost:3000/users/signin", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(values, null, 2)
-          })
-            .then(res => res.json())
-            .then(data => {
-              console.log(data);
-            });
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <Field type="text" name="nombre" />
-          <ErrorMessage name="nombre" component="div" />
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="div" />
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="div" />
-          <Field type="calle" name="calle" />
-          <ErrorMessage name="calle" component="div" />
-          <Field type="altura" name="altura" />
-          <ErrorMessage name="altura" component="div" />
-          <Field type="ciudad" name="ciudad" />
-          <ErrorMessage name="ciudad" component="div" />
-          <Field type="provincia" name="provincia" />
-          <ErrorMessage name="provincia" component="div" />
-          <Field type="postal" name="postal" />
-          <ErrorMessage name="postal" component="div" />
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
-        </Form>
-      )}
-    </Formik>
-  </div>
-);
+  render() {
+    return (
+      <Container>
+        <Row>
+          <h2 className="text-secondary">Registrarse</h2>
+        </Row>
+        <Formik
+          initialValues={{
+            nombre: "",
+            mail: "",
+            password: "",
+            calle: "",
+            altura: "",
+            ciudad: "",
+            provincia: "",
+            postal: ""
+          }}
+          validate={values => {
+            let errors = {};
+            if (!values.email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "Email inválido";
+            }
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              fetch("http://localhost:3000/users/signin", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(values, null, 2)
+              })
+                .then(res => res.json())
+                .then(data => {
+                  console.log(data);
+                });
+              alert('Se ha dado de alta en el sistema exitosamente');
+              setSubmitting(false);
+            }, 400);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <Row className="form-group">
+                <Col>
+                  <label htmlFor="nombre">Nombre</label>
+                  <Field className="form-control" type="text" name="nombre" />
+                  <ErrorMessage name="nombre" component="div" />
+                </Col>
+                <Col>
+                  <label htmlFor="email">Email</label>
+                  <Field className="form-control" type="email" name="email" />
+                  <ErrorMessage name="email" component="div" />
+                </Col>
+                <Col>
+                  <label htmlFor="password">Contraseña</label>
+                  <Field className="form-control" type="password" name="password" />
+                  <ErrorMessage name="password" component="div" />
+                </Col>
+              </Row>
+              <Row className="form-group">
+                <Col>
+                  <label htmlFor="calle">Calle</label>
+                  <Field className="form-control" type="calle" name="calle" />
+                  <ErrorMessage name="calle" component="div" />
+                </Col>
+                <Col>
+                  <label htmlFor="altura">Altura</label>
+                  <Field className="form-control" type="altura" name="altura" />
+                  <ErrorMessage name="altura" component="div" />
+                </Col>
+              </Row>
+              <Row className="form-group">
+                <Col>
+                  <label htmlFor="ciudad">Ciudad</label>
+                  <Field className="form-control" type="ciudad" name="ciudad" />
+                  <ErrorMessage name="ciudad" component="div" />
+                </Col>
+                <Col>
+                  <label htmlFor="provincia">Provincia</label>
+                  <Field className="form-control" type="provincia" name="provincia" />
+                  <ErrorMessage name="provincia" component="div" />
+                </Col>
+                <Col>
+                  <label htmlFor="postal">Código Postal</label>
+                  <Field className="form-control" type="postal" name="postal" />
+                  <ErrorMessage name="postal" component="div" />
+                </Col>
+              </Row>
+              <button className="btn btn-primary mr-2" type="submit" disabled={isSubmitting}>
+                Registrarme!
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    );
+  }
+}
 
-// export default Basic;
 export default Registro;
